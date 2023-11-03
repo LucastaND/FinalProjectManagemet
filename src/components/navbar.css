@@ -57,7 +57,7 @@
   transform: scaleX(1);
 }
 
-.navbar-2 .btn-popup,
+/* .navbar-2 .btn-popup,
 icon-icon {
   width: 125px;
   height: 50px;
@@ -75,6 +75,20 @@ icon-icon {
 
 .navbar-2 .btn-popup:hover {
   background: #fff;
+  color: #162938;
+} */
+
+.navbar-2 .icon-user,
+icon-icon {
+  outline: none;
+  cursor: pointer;
+  transition: 0.5s;
+  font-size: 2em;
+  color: #fff;
+  font-weight: 500;
+}
+
+.navbar-2 .icon-user:hover {
   color: #162938;
 }
 

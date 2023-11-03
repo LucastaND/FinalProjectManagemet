@@ -3,13 +3,11 @@ import * as Yup from "yup";
 import "./form.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import NavBar from "./Navbar";
-/*import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import usePassswordToggle from "../../demo-project/src/hooks/usePassswordToggle";*/
 
 const SignupForm = () => {
-  /*const [PasswordInputType, ToggleIcon] = usePassswordToggle;*/
   const [action, setAction] = useState("Login");
+
+  const [passwordVisible, setPasswordvisible] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -50,6 +48,26 @@ const SignupForm = () => {
 
   return (
     <section>
+      <label className="border-">
+        <div className="login-register">
+          <button
+            className={action === "Login" ? "submit gray transform" : "submit"}
+            onClick={() => {
+              setAction("Sign Up");
+            }}
+          >
+            Sign Up
+          </button>
+          <button
+            className={action === "Sign Up" ? "submit gray" : "submit"}
+            onClick={() => {
+              setAction("Login");
+            }}
+          >
+            Login
+          </button>
+        </div>
+      </label>
       <div className="wrapper">
         <div className="inforform">
           <form onSubmit={formik.handleSubmit}>
@@ -111,18 +129,26 @@ const SignupForm = () => {
 
             <div className="inputbox">
               <label htmlfor="password">Password</label>
-              <input
-                value={formik.values.password}
-                onChange={formik.handleChange}
-                type="password"
-                placeholder="Enter your Password"
-                id="password"
-                name="password"
-              />
-              {/* <span className="password-toggle-icon">{ToggleIcon}</span> */}
-              {formik.errors.password && (
-                <p className="errorMsg"> {formik.errors.password} </p>
-              )}
+              <div className="password-input">
+                <input
+                  className="password-input-field"
+                  value={formik.values.password}
+                  onChange={formik.handleChange}
+                  type={passwordVisible ? "text" : "password"}
+                  placeholder="Enter your Password"
+                  id="password"
+                  name="password"
+                />
+                <button
+                  className="toggle-password"
+                  onClick={() => setPasswordvisible(!passwordVisible)}
+                >
+                  {passwordVisible ? "Hide" : "Show"}
+                </button>
+                {formik.errors.password && (
+                  <p className="errorMsg"> {formik.errors.password} </p>
+                )}
+              </div>
             </div>
 
             {action === "Login" ? (
@@ -175,27 +201,6 @@ const SignupForm = () => {
                 </div>
               )}
             </div>
-
-            {/* <div className="login-register">
-              <button
-                className={
-                  action === "Login" ? "submit gray transform" : "submit"
-                }
-                onClick={() => {
-                  setAction("Sign Up");
-                }}
-              >
-                Sign Up
-              </button>
-              <button
-                className={action === "Sign Up" ? "submit gray" : "submit"}
-                onClick={() => {
-                  setAction("Login");
-                }}
-              >
-                Login
-              </button>
-            </div> */}
           </form>
         </div>
       </div>

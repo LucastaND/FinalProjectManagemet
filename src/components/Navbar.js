@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import SignupForm from "./SignupForm";
 
 const NavBar = () => {
-  const [action, setAction] = useState("Change");
   return (
     <header>
       <h2 className="logo">
@@ -19,24 +18,11 @@ const NavBar = () => {
       </Nav> */}
 
       <Nav className="navbar-2">
-        <div className="login-register">
-          <button
-            className={action === "Login" ? "submit gray transform" : "submit"}
-            onClick={() => {
-              setAction("Sign Up");
-            }}
-          >
-            Sign Up
-          </button>
-          <button
-            className={action === "Sign Up" ? "submit gray" : "submit"}
-            onClick={() => {
-              setAction("Login");
-            }}
-          >
-            Login
-          </button>
-        </div>
+        <Link to="/login">
+          <div className="icon-user">
+            <ion-icon name="person-add-sharp"></ion-icon>
+          </div>
+        </Link>
         {/* <Dropdown>
           <Dropdown.Toggle className="btn-popup">
             <ion-icon name="person-circle-sharp"></ion-icon>

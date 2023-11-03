@@ -11,7 +11,7 @@ body {
   align-self: center;
   align-content: center;
   min-height: 100vh;
-  background: url(./assets/background.jpg) no-repeat;
+  background: url(./assets/bg.jpg) no-repeat;
   background-size: cover;
   background-position: center;
 }
